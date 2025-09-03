@@ -4,7 +4,7 @@
         <!-- Participant Select -->
         <div>
             <Label for="participant-select">Speaking as</Label>
-            <Select v-model="selectedParticipant">
+            <Select v-model="selectedParticipant" :items="participantItems">
                 <SelectTrigger>
                     <SelectValue placeholder="Select participant" />
                 </SelectTrigger>
@@ -59,13 +59,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import Button from './ui/button.vue';
 import Textarea from './ui/textarea.vue';
-import Select from './ui/select.vue';
-import { Label } from './ui/label';
+import Select, { SelectItem, SelectTrigger, SelectContent, SelectValue } from './ui/select.vue';
+import Label from './ui/label.vue';
 import { Send } from 'lucide-vue-next';
-import type { Participant } from '../App';
+import type { Participant } from '../types/participant';
 
 interface Props {
     participants: Participant[];
@@ -74,8 +74,16 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
 const argumentText = ref('');
-const selectedParticipant = ref('');
+const selectedParticipant = ref<string | number>('');
+
+const participantItems = computed(() =>
+    props.participants.map((p) => ({
+        value: p.id,
+        label: `${p.name}${p.side === 'for' ? ' 👍 For' : ' 👎 Against'}`,
+    }))
+);
 
 const handleSubmit = () => {
     if (!argumentText.value.trim() || !selectedParticipant.value) return;

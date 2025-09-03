@@ -44,9 +44,10 @@
 </template>
 
 <script setup lang="ts">
-import { Card } from './ui/card';
-import { Avatar, AvatarFallback } from './ui/avatar';
-import { Badge } from './ui/badge';
+import { Card } from './ui/card.vue';
+import Avatar from './ui/avatar.vue';
+import AvatarFallback from './ui/avatar-fallback.vue';
+import Badge from './ui/badge.vue';
 import { MessageSquare } from 'lucide-vue-next';
 import type { Argument, Participant } from '../App';
 import { ref } from 'vue';
