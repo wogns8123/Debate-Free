@@ -10,8 +10,9 @@ export function ParticipantList({ participants }: ParticipantListProps) {
   const forParticipants = participants.filter(p => p.side === 'for');
   const againstParticipants = participants.filter(p => p.side === 'against');
 
-  const ParticipantItem = ({ participant }: { participant: Participant }) => (
-    <div className="flex items-center gap-3 p-2 rounded-lg bg-muted/50">
+  // ParticipantItem 컴포넌트를 인라인으로 사용하여 key prop 관련 타입 문제를 회피
+  const renderParticipantItem = (participant: Participant) => (
+    <div key={participant.id} className="flex items-center gap-3 p-2 rounded-lg bg-muted/50">
       <Avatar className="w-8 h-8">
         <AvatarFallback className={`${participant.color} text-white text-sm`}>
           {participant.name.charAt(0).toUpperCase()}
@@ -34,9 +35,7 @@ export function ParticipantList({ participants }: ParticipantListProps) {
         </div>
         <div className="space-y-2">
           {forParticipants.length > 0 ? (
-            forParticipants.map(participant => (
-              <ParticipantItem key={participant.id} participant={participant} />
-            ))
+            forParticipants.map(renderParticipantItem)
           ) : (
             <div className="text-muted-foreground text-sm text-center py-2">
               No participants yet
@@ -54,9 +53,7 @@ export function ParticipantList({ participants }: ParticipantListProps) {
         </div>
         <div className="space-y-2">
           {againstParticipants.length > 0 ? (
-            againstParticipants.map(participant => (
-              <ParticipantItem key={participant.id} participant={participant} />
-            ))
+            againstParticipants.map(renderParticipantItem)
           ) : (
             <div className="text-muted-foreground text-sm text-center py-2">
               No participants yet

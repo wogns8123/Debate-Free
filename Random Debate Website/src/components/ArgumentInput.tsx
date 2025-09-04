@@ -6,6 +6,7 @@ import { Label } from './ui/label';
 import { Send } from 'lucide-react';
 import { Participant } from '../App';
 import { User } from './AuthModal';
+import { KeyboardEvent } from "react";
 
 type ArgumentInputProps = {
   onAddArgument: (text: string, participantId: string) => void;
@@ -29,7 +30,7 @@ export function ArgumentInput({ onAddArgument, participants, disabled = false, c
     setArgumentText('');
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyPress = (e: KeyboardEvent) => {
     if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
       e.preventDefault();
       handleSubmit();

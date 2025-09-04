@@ -6,7 +6,8 @@ import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { User, Mail, Lock, UserPlus, LogIn, Eye, EyeOff } from 'lucide-react';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
+import { FormEvent } from 'react';
 
 export type User = {
   id: string;
@@ -57,7 +58,7 @@ export function AuthModal({ isOpen, onClose, onLogin, onRegister }: AuthModalPro
     onClose();
   };
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
@@ -90,7 +91,7 @@ export function AuthModal({ isOpen, onClose, onLogin, onRegister }: AuthModalPro
     }
   };
 
-  const handleRegister = async (e: React.FormEvent) => {
+  const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
     
     if (registerData.password !== registerData.confirmPassword) {
