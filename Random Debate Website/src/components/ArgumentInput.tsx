@@ -4,13 +4,13 @@ import { Textarea } from './ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Label } from './ui/label';
 import { Send } from 'lucide-react';
-import { Participant } from '../App';
+import { ParticipantDto } from '../types';
 import { User } from './AuthModal';
 import { KeyboardEvent } from "react";
 
 type ArgumentInputProps = {
   onAddArgument: (text: string, participantId: string) => void;
-  participants: Participant[];
+  participants: ParticipantDto[];
   disabled?: boolean;
   currentUser: User | null;
 };

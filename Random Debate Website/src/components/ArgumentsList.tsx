@@ -2,11 +2,11 @@ import { Card } from './ui/card';
 import { Avatar, AvatarFallback } from './ui/avatar';
 import { Badge } from './ui/badge';
 import { MessageSquare } from 'lucide-react';
-import { Argument, Participant } from '../App';
+import { Argument, ParticipantDto } from '../types';
 
 type ArgumentsListProps = {
   arguments: Argument[];
-  participants: Participant[];
+  participants: ParticipantDto[];
 };
 
 export function ArgumentsList({ arguments: debateArguments, participants }: ArgumentsListProps) {

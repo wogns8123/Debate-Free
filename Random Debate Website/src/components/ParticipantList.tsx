@@ -1,9 +1,9 @@
 import { Badge } from './ui/badge';
 import { Avatar, AvatarFallback } from './ui/avatar';
-import { Participant } from '../App';
+import { ParticipantDto } from '../types';
 
 type ParticipantListProps = {
-  participants: Participant[];
+  participants: ParticipantDto[];
 };
 
 export function ParticipantList({ participants }: ParticipantListProps) {
@@ -11,7 +11,7 @@ export function ParticipantList({ participants }: ParticipantListProps) {
   const againstParticipants = participants.filter(p => p.side === 'against');
 
   // ParticipantItem 컴포넌트를 인라인으로 사용하여 key prop 관련 타입 문제를 회피
-  const renderParticipantItem = (participant: Participant) => (
+  const renderParticipantItem = (participant: ParticipantDto) => (
     <div key={participant.id} className="flex items-center gap-3 p-2 rounded-lg bg-muted/50">
       <Avatar className="w-8 h-8">
         <AvatarFallback className={`${participant.color} text-white text-sm`}>
