@@ -1,8 +1,12 @@
 package com.example.debate_backend.dto;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ArgumentDto {
     private String id;
     private String participantId;

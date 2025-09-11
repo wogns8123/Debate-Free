@@ -1,5 +1,6 @@
 package com.example.debate_backend.controller;
 
+import com.example.debate_backend.dto.ArgumentDto; // ArgumentDto 임포트
 import com.example.debate_backend.dto.DiscussionStatusDto;
 import com.example.debate_backend.dto.ParticipantDto;
 import com.example.debate_backend.dto.VoteResultsDto;
@@ -20,40 +21,34 @@ public class RoomController {
         this.discussionService = discussionService;
     }
 
-    /**
-     * 새로운 토론방을 생성합니다.
-     * @return 생성된 방의 초기 상태 정보 (roomId 포함)
-     */
     @PostMapping("/create")
     public ResponseEntity<DiscussionStatusDto> createRoom() {
         DiscussionStatusDto initialStatus = discussionService.createRoom();
         return ResponseEntity.ok(initialStatus);
     }
 
-    /**
-     * 특정 토론방의 현재 상태를 조회합니다.
-     */
     @GetMapping("/{roomId}/status")
     public ResponseEntity<DiscussionStatusDto> getRoomStatus(@PathVariable String roomId) {
         DiscussionStatusDto status = discussionService.getRoomStatus(roomId);
         return status != null ? ResponseEntity.ok(status) : ResponseEntity.notFound().build();
     }
 
-    /**
-     * 특정 토론방의 현재 참가자 목록을 조회합니다.
-     */
     @GetMapping("/{roomId}/participants")
     public ResponseEntity<List<ParticipantDto>> getParticipants(@PathVariable String roomId) {
         List<ParticipantDto> participants = discussionService.getParticipants(roomId);
         return ResponseEntity.ok(participants);
     }
 
-    /**
-     * 특정 토론방의 현재 투표 결과를 조회합니다.
-     */
     @GetMapping("/{roomId}/vote-results")
     public ResponseEntity<VoteResultsDto> getVoteResults(@PathVariable String roomId) {
         VoteResultsDto results = discussionService.getVoteResults(roomId);
         return ResponseEntity.ok(results);
+    }
+
+    // 🟢 특정 방의 모든 주장을 가져오는 REST API 엔드포인트 추가
+    @GetMapping("/{roomId}/arguments")
+    public ResponseEntity<List<ArgumentDto>> getArguments(@PathVariable String roomId) {
+        List<ArgumentDto> arguments = discussionService.getArguments(roomId);
+        return ResponseEntity.ok(arguments);
     }
 }
