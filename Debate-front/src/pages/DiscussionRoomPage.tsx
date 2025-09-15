@@ -222,8 +222,8 @@ const DiscussionRoomPage: React.FC = () => {
                 });
             }, 1000);
         } else if (timeRemaining <= 0 && isTimerRunning) { // 시간이 0이 되고 타이머가 아직 running일 경우 강제로 종료 처리
-             setIsTimerRunning(false);
-             sendStatusUpdate('ENDED', '시간이 종료되었습니다!');
+            setIsTimerRunning(false);
+            sendStatusUpdate('ENDED', '시간이 종료되었습니다!');
         }
         return () => {
             if (interval) clearInterval(interval);
