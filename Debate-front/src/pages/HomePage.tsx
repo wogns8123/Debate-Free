@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { DiscussionStatusDto } from '../types'; // Gist의 types.ts를 백엔드 DTO에 맞게 수정해야 함
+import { Button } from '../components/ui/button'; 
 
 const HomePage: React.FC = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -17,6 +18,8 @@ const HomePage: React.FC = () => {
         } catch (error) {
             console.error("Failed to create room:", error);
             alert("방 생성에 실패했습니다.");
+            
+        }  finally { // finally 블록에서 isLoading을 false로 설정하여, 에러 발생 시에도 버튼 활성화
             setIsLoading(false);
         }
     };
@@ -28,6 +31,7 @@ const HomePage: React.FC = () => {
             <button onClick={handleCreateRoom} disabled={isLoading} className="px-6 py-3 bg-blue-600 rounded-lg text-lg font-semibold hover:bg-blue-700 disabled:bg-gray-500">
                 {isLoading ? '방 생성 중...' : '새 토론방 만들기'}
             </button>
+            
         </div>
     );
 };

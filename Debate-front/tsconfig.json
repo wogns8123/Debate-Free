@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // 최신 ES 버전
+    "lib": ["DOM", "DOM.Iterable", "ESNext"], // DOM 및 최신 JS API 사용
+    "allowJs": false, // JS 파일 허용 여부 (TS 프로젝트에서는 false 권장)
+    "skipLibCheck": true, // 라이브러리 타입 체크 건너뛰기 (성능, 문제 발생 시 true)
+    "esModuleInterop": true, // CommonJS 모듈을 ES 모듈처럼 임포트 가능
+    "allowSyntheticDefaultImports": true, // 기본 임포트 허용
+    "strict": true, // 엄격한 타입 체크
+    "forceConsistentCasingInFileNames": true, // 파일명 대소문자 일관성 강제
+    "noEmit": true, // TS -> JS 변환 결과 파일 생성 안 함 (Vite가 처리)
+    "jsx": "react-jsx", // 🟢 JSX를 'react-jsx' 런타임으로 처리 (필수!)
+    "module": "ESNext", // 모듈 시스템
+    "moduleResolution": "bundler", // 🟢 moduleResolution을 'bundler'로 설정 (Vite용)
+    "resolveJsonModule": true, // JSON 파일 임포트 허용
+    "isolatedModules": true, // 각 파일을 독립적인 모듈로 컴파일
+    "paths": {
+      "@/*": ["./src/*"] // @/ 임포트 경로 설정 (선택 사항)
+    }
+  },
+  "include": ["src", "vite.config.ts"] // src 폴더와 vite.config.ts 포함
+}
