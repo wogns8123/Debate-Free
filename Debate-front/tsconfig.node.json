@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "composite": true, // 이 tsconfig가 다른 tsconfig에 의해 참조될 수 있음을 나타냄
+    "composite": true,
     "skipLibCheck": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "jsx": "react-jsx", // 🟢 여기도 'react-jsx'로 설정
-    "types": ["node"] // Node.js 타입 정의 포함 (vite.config.ts에서 path 같은 Node.js 모듈 사용 시 필요)
+    "jsx": "react-jsx",
+    "types": ["node"]
   },
-  "include": ["vite.config.ts"] // vite.config.ts 파일만 이 설정으로 컴파일
+  "include": ["vite.config.ts"]
 }

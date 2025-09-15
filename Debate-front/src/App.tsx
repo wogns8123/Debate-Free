@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage'; 
 import DiscussionRoomPage from './pages/DiscussionRoomPage'; // 새로 만들 페이지
-import './styles/globals.css';
+import './index.css';
 
 function App() {
     return (
