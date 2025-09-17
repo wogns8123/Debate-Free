@@ -1,31 +1,25 @@
 {
   "compilerOptions": {
-    "target": "ES2020", // JavaScript 출력 버전 (최신 환경에 맞춤)
-    "useDefineForClassFields": true, // 클래스 필드 정의 방식 (Vite 권장)
-    "lib": ["DOM", "DOM.Iterable", "ESNext"], // DOM 및 최신 JavaScript API 사용 가능
-    "allowJs": false, // JavaScript 파일도 타입스크립트와 함께 허용할지 여부 (TypeScript 프로젝트에서는 false 권장)
-    "skipLibCheck": true, // 라이브러리 타입 체크 건너뛰기 (컴파일 속도 향상, 문제 발생 시 true)
-    "esModuleInterop": true, // CommonJS 모듈을 ES 모듈처럼 임포트 가능
-    "allowSyntheticDefaultImports": true, // 기본 임포트 허용 (예: import React from 'react' 대신 import * as React from 'react')
-    "strict": true, // 엄격한 타입 체크 활성화 (권장)
-    "forceConsistentCasingInFileNames": true, // 파일명 대소문자 일관성 강제
-    "noEmit": true, // 컴파일 결과물(JS 파일) 생성 안 함 (Vite가 처리)
-    "jsx": "react-jsx", // 🟢 JSX를 'react-jsx' 런타임으로 처리 (필수!)
-    "module": "ESNext", // 모듈 시스템 (최신 브라우저용)
-    "moduleResolution": "bundler", // 🟢 모듈 해결 전략 (Vite 권장)
-    "resolveJsonModule": true, // JSON 파일 임포트 허용
-    "isolatedModules": true, // 각 파일을 독립적인 모듈로 컴파일
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"] // @/ 임포트 별칭 설정 (선택 사항이지만 편리함)
+      "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "src", // src 폴더의 모든 파일을 컴파일에 포함
-    "vite.config.ts" // Vite 설정 파일도 포함
-  ],
-  "exclude": [
-    "node_modules", // node_modules 폴더 제외
-    "dist" // 빌드 결과물 폴더 제외
-  ],
-  "references": [{ "path": "./tsconfig.node.json" }] // Vite 프로젝트에서 Node 환경 설정 파일을 참조 (일반적)
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
